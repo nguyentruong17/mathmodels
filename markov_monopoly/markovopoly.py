@@ -260,10 +260,15 @@ for state in range(3):
 
 #adding the name of each square
 names = []
-with open("square_names.txt", "r") as file:
+
+#this one for viet version
+#with open("square_names_vie.txt", "r", encoding="utf8") as file:
+
+#this one for us version    
+with open("square_names_eng.txt", "r") as file:
     for line in file:
         names.append(line.strip())
-
+print(len(names))
 #graph
 y_pos = np.arange(len(names))
 plt.figure(figsize=(15,5))
