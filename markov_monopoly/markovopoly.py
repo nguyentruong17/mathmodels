@@ -269,15 +269,6 @@ with open("square_names_eng.txt", "r") as file:
     for line in file:
         names.append(line.strip())
 print(len(names))
-#graph
-y_pos = np.arange(len(names))
-plt.figure(figsize=(15,5))
-plt.bar(y_pos, allProbs)
-
-plt.xticks(y_pos, names, rotation=90)
-plt.subplots_adjust(bottom=0.4)
- 
-plt.title("Probability Of \nGoing To All Squares \nOn The Monopoly Gameboard")
 
 #adding the overall monopolies
 brown = [1, 3]
@@ -295,7 +286,7 @@ monopoliesMap = {
         'Orange':orange, 
         'Red':red, 
         'Yellow':yellow, 
-        'Greeen':green, 
+        'Green':green, 
         'Dark Blue':darkBlue
         }
 
@@ -349,5 +340,44 @@ print('Probability  |'+'|  Monopoly')
 for i in range(len(monopoliesProb)):
     print(f'{monopoliesProb[i]:0.9f}      {monopoliesNames[i]}')
 print('\n\n')
+
+#graph
+y_pos = np.arange(len(names))
+plt.figure(figsize=(15,5))
+colors=[]
+for index in range(len(monopolies)):
+    each = monopolies[index]
+    if each == 'Brown':
+        colors.append('brown')
+    elif each == 'Light Blue':
+        colors.append('lightblue')
+    elif each == 'Pink':
+        colors.append('pink')
+    elif each == 'Orange':
+        colors.append('orange')
+    elif each == 'Red':
+        colors.append('red')
+    elif each == 'Yellow':
+        colors.append('yellow')
+    elif each == 'Green':
+        colors.append('green')
+    elif each == 'Dark Blue':
+        colors.append('darkblue')
+    else:
+        #railroads
+        if (index in [5, 15, 25, 35]):
+            colors.append('tan')
+        #companies
+        elif (index in [12, 28]):
+            colors.append('plum')
+        else:
+            colors.append('silver')
+            
+plt.bar(y_pos, allProbs, color=colors)
+
+plt.xticks(y_pos, names, rotation=90)
+plt.subplots_adjust(bottom=0.4)
+ 
+plt.title("Probability Of \nGoing To All Squares \nOn The Monopoly Gameboard")
 
     
