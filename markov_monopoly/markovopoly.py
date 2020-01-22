@@ -262,10 +262,10 @@ for state in range(3):
 names = []
 
 #this one for viet version
-with open("square_names_vie.txt", "r", encoding="utf8") as file:
+#with open("square_names_vie.txt", "r", encoding="utf8") as file:
 
 #this one for us version    
-#with open("square_names_eng.txt", "r") as file:
+with open("square_names_eng.txt", "r") as file:
     for line in file:
         names.append(line.strip())
 print(len(names))
